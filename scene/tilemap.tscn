@@ -1,0 +1,31 @@
+[gd_scene format=4 uid="uid://d3nc7wu7qk2pq"]
+
+[ext_resource type="Texture2D" uid="uid://42cc0o0y2jjp" path="res://asserts/64.png" id="1_stcq0"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d2gan"]
+texture = ExtResource("1_stcq0")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_vt0kc"]
+sources/1 = SubResource("TileSetAtlasSource_d2gan")
+
+[node name="tilemap" type="Node2D" unique_id=518280067]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=155552268]
+tile_map_data = PackedByteArray("AAD//wAAAQABAAAAAAAAAAAAAQABAAAAAAABAAAAAQACAAAAAAACAAAAAQABAAAAAAADAAAAAQABAAAAAAD+/wAAAQACAAAAAAD9/wAAAQABAAAAAAAEAAAAAQACAAAAAAAFAAAAAQABAAAAAAAGAAAAAQACAAAAAAAHAAAAAQACAAAAAAA=")
+tile_set = SubResource("TileSet_vt0kc")

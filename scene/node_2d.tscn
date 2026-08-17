@@ -1,0 +1,65 @@
+[gd_scene format=4 uid="uid://blsvopj7jeai"]
+
+[ext_resource type="Script" uid="uid://b3fpaledfire1" path="res://scene/node_2d.gd" id="1_3cebx"]
+[ext_resource type="PackedScene" uid="uid://dp07sl4gefcbx" path="res://scene/player.tscn" id="1_guiot"]
+[ext_resource type="Texture2D" uid="uid://42cc0o0y2jjp" path="res://asserts/64.png" id="2_guiot"]
+[ext_resource type="PackedScene" uid="uid://demsx1oksrn3v" path="res://scene/arrayview.tscn" id="3_ppd22"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ppd22"]
+texture = ExtResource("2_guiot")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_3cebx"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_ppd22")
+
+[node name="Node2D" type="Node2D" unique_id=635524330]
+script = ExtResource("1_3cebx")
+
+[node name="player" parent="." unique_id=1394279088 instance=ExtResource("1_guiot")]
+position = Vector2(-43, -6)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=847000999]
+tile_map_data = PackedByteArray("AAD+/wAAAAABAAAAAAD//wAAAAABAAAAAAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAADAAAAAAD9/wAAAAAAAAAAAAD8/wAAAAADAAEAAAD8////AAADAAEAAAD8//7/AAADAAEAAAD8//3/AAADAAEAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAABAAAAAAAGAAAAAAABAAAAAAAHAAAAAAABAAAAAAAIAAAAAAABAAAAAAAJAAAAAAABAAAAAAAKAAAAAAABAAAAAAALAAAAAAABAAAAAAA=")
+tile_set = SubResource("TileSet_3cebx")
+
+[node name="array_view" parent="." unique_id=2035490074 instance=ExtResource("3_ppd22")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=221690714]
+position = Vector2(0, 0.9999962)
+rotation = -1.7994344
+scale = Vector2(23.449999, 23.450003)
+skew = 0.14835298
+offset = Vector2(-0.165, 0)
+zoom = Vector2(2.27, 2.27)

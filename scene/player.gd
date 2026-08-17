@@ -1,0 +1,109 @@
+extends CharacterBody2D
+
+signal input_array_update(inputs)
+# These are the variable for the player to move in 
+@export var SPEED = 160.0
+const JUMP_VELOCITY = -280.0
+#This array hold the all input data for the movement of the player
+var input_array = []
+#This hold current varible equal to the input key of the player
+var current_input = ""
+#this is the limit at which the inuput can be holded for and the time the inputs will be executed 
+@export var input_limit = 3
+@export var input_loop = 2
+#This is the speed at which the character moves
+@export var up_and_dir_time = 0.25
+@export var complete_run_time = 0.5
+var input_valid := true
+
+func append_array():
+	if (input_array.size() < input_limit):
+		#check if the cuurent array is less than the limit then add the cuurent input to the  array 
+		input_array.append(current_input)
+		#gives signal to the array displayer for the playe rto see 
+		input_array_update.emit(input_array)
+		print(current_input)
+	else:
+		print("limit exceeded")
+
+func print_array():
+	for i in range(input_array.size()):
+		print("array is =")
+		print(input_array[i])
+
+func input_mapping():
+	#if the enter is down no other input i want 
+	# Handle jump.
+	if (input_valid == true):
+		if Input.is_action_just_pressed("jm") and is_on_floor():
+			current_input = "jm"
+			append_array()
+			
+		elif Input.is_action_just_pressed("left"):
+			current_input = "left"
+			append_array()
+			
+		elif Input.is_action_just_pressed("right"):
+			current_input = "right"
+			append_array()
+				
+		elif Input.is_action_just_pressed("up_left"):
+			current_input = "up_left"
+			append_array()
+				
+		elif Input.is_action_just_pressed("up_right"):
+			current_input = "up_right"
+			append_array()
+			
+# Function to remove the latest inputed value in the array 
+	if Input.is_action_just_pressed("back"):
+		if input_array.size() > 0:
+			input_array.pop_back()
+			input_array_update.emit(input_array)
+			print("removed")
+		
+	elif Input.is_action_just_pressed("enter") and (input_valid == true):
+			input_valid = false
+			for i in range(input_loop):
+				await movement()
+			input_array.clear()
+			input_array_update.emit(input_array)
+			input_valid = true
+		
+	elif Input.is_action_just_pressed("print_array"):
+		print_array()
+
+func movement():
+	for i in range(input_array.size()):
+		match input_array[i]:
+			"jm":
+				velocity.y = JUMP_VELOCITY
+				await get_tree().create_timer(1.0).timeout
+			"left":
+				velocity.x = -SPEED
+				await get_tree().create_timer(complete_run_time).timeout
+				velocity.x = 0
+			"right":
+				velocity.x = +SPEED
+				await get_tree().create_timer(complete_run_time).timeout
+				velocity.x = 0
+			"up_right":
+				velocity.y = JUMP_VELOCITY
+				velocity.x = +SPEED
+				await get_tree().create_timer(up_and_dir_time).timeout
+				velocity.x = 0
+			"up_left":
+				velocity.y = JUMP_VELOCITY
+				velocity.x = -SPEED
+				await get_tree().create_timer(up_and_dir_time).timeout
+				velocity.x = 0
+			_:
+				velocity.x = move_toward(velocity.x, 0, SPEED)
+
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+	input_mapping()
+	
+	move_and_slide()

@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://demsx1oksrn3v"]
+
+[ext_resource type="Script" uid="uid://vw1uik1lapom" path="res://scene/control.gd" id="1_4hsrj"]
+[ext_resource type="Texture2D" uid="uid://b5a6l8kk7221c" path="res://asserts/New Piskel (1).png" id="2_pec15"]
+
+[node name="Node2D" type="Node2D" unique_id=2035490074]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1030581238]
+scale = Vector2(0.485, 0.485)
+transform = Transform2D(0.485, 0, 0, 0.485, 0, 0)
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=890543513]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(2.224414, 2.1963594)
+size_flags_vertical = 4
+script = ExtResource("1_4hsrj")
+
+[node name="slot1" type="TextureRect" parent="CanvasLayer/Control" unique_id=2074731961]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_pec15")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label1" type="Label" parent="CanvasLayer/Control/slot1" unique_id=35587052]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="slot2" type="TextureRect" parent="CanvasLayer/Control" unique_id=2074241912]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 128.0
+offset_bottom = 64.0
+texture = ExtResource("2_pec15")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/slot2" unique_id=1929441511]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(1.0032634, 0.91706383)
+
+[node name="slot3" type="TextureRect" parent="CanvasLayer/Control" unique_id=1530726301]
+layout_mode = 0
+offset_left = 128.0
+offset_right = 192.0
+offset_bottom = 64.0
+texture = ExtResource("2_pec15")
+
+[node name="Label3" type="Label" parent="CanvasLayer/Control/slot3" unique_id=1653180757]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
