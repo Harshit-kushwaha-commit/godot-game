@@ -16,13 +16,21 @@ var current_input = ""
 @export var complete_run_time = 0.5
 var input_valid := true
 
-func append_array():
+const jump_cmd = "jump"
+const right_cmd = "right"
+const left_cmd = "left"
+const upper_left_cmd = "upper left"
+const upper_right_cmd = "upper right"
+
+
+
+func append_array(command: String):
 	if (input_array.size() < input_limit):
 		#check if the cuurent array is less than the limit then add the cuurent input to the  array 
-		input_array.append(current_input)
+		input_array.append(command)
 		#gives signal to the array displayer for the playe rto see 
 		input_array_update.emit(input_array)
-		print(current_input)
+		print(command)
 	else:
 		print("limit exceeded")
 
@@ -30,30 +38,26 @@ func print_array():
 	for i in range(input_array.size()):
 		print("array is =")
 		print(input_array[i])
+		
 
 func input_mapping():
 	#if the enter is down no other input i want 
 	# Handle jump.
 	if (input_valid == true):
 		if Input.is_action_just_pressed("jm") and is_on_floor():
-			current_input = "jm"
-			append_array()
+			append_array("jm")
 			
 		elif Input.is_action_just_pressed("left"):
-			current_input = "left"
-			append_array()
+			append_array("left")
 			
 		elif Input.is_action_just_pressed("right"):
-			current_input = "right"
-			append_array()
+			append_array("right")
 				
 		elif Input.is_action_just_pressed("up_left"):
-			current_input = "up_left"
-			append_array()
+			append_array("up_left")
 				
 		elif Input.is_action_just_pressed("up_right"):
-			current_input = "up_right"
-			append_array()
+			append_array("up_right")
 			
 # Function to remove the latest inputed value in the array 
 	if Input.is_action_just_pressed("back"):
