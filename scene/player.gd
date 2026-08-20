@@ -26,9 +26,7 @@ const upper_right_cmd = "upper right"
 
 func append_array(command: String):
 	if (input_array.size() < input_limit):
-		#check if the cuurent array is less than the limit then add the cuurent input to the  array 
-		input_array.append(command)
-		#gives signal to the array displayer for the playe rto see 
+		input_array.append(command) 
 		input_array_update.emit(input_array)
 		print(command)
 	else:
@@ -39,6 +37,21 @@ func print_array():
 		print("array is =")
 		print(input_array[i])
 		
+
+func delete_element():
+	if input_array.size() > 0:
+			input_array.pop_back()
+			input_array_update.emit(input_array)
+			print("removed")
+			
+
+func start_movement():
+			input_valid = false
+			for i in range(input_loop):
+				await movement()
+			input_array.clear()
+			input_array_update.emit(input_array)
+			input_valid = true
 
 func input_mapping():
 	#if the enter is down no other input i want 
@@ -61,18 +74,11 @@ func input_mapping():
 			
 # Function to remove the latest inputed value in the array 
 	if Input.is_action_just_pressed("back"):
-		if input_array.size() > 0:
-			input_array.pop_back()
-			input_array_update.emit(input_array)
-			print("removed")
-		
+		delete_element()
+			
 	elif Input.is_action_just_pressed("enter") and (input_valid == true):
-			input_valid = false
-			for i in range(input_loop):
-				await movement()
-			input_array.clear()
-			input_array_update.emit(input_array)
-			input_valid = true
+		start_movement()
+
 		
 	elif Input.is_action_just_pressed("print_array"):
 		print_array()
