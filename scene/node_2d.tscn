@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dp07sl4gefcbx" path="res://scene/player.tscn" id="1_guiot"]
 [ext_resource type="Texture2D" uid="uid://42cc0o0y2jjp" path="res://asserts/64.png" id="2_guiot"]
 [ext_resource type="PackedScene" uid="uid://demsx1oksrn3v" path="res://scene/arrayview.tscn" id="3_ppd22"]
+[ext_resource type="PackedScene" uid="uid://wnot4ta53iq8" path="res://scene/MUSHRROM.tscn" id="5_tytcy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ppd22"]
 texture = ExtResource("2_guiot")
@@ -63,3 +64,7 @@ scale = Vector2(23.449999, 23.450003)
 skew = 0.14835298
 offset = Vector2(-0.165, 0)
 zoom = Vector2(2.27, 2.27)
+
+[node name="Area2Da" parent="." unique_id=204026515 instance=ExtResource("5_tytcy")]
+position = Vector2(3, -13)
+scale = Vector2(0.13, 0.13)

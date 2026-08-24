@@ -21,7 +21,8 @@ const left_cmd = "left"
 const upper_left_cmd = "upper left"
 const upper_right_cmd = "upper right"
 
-
+func empthy_the_array():
+	print("array emptied")
 
 func append_array(command: String):
 	if (input_array.size() < input_limit):

@@ -6,15 +6,18 @@
 resource_name = "MUSHRROM_SCRIPT"
 script/source = "extends Area2D
 
+signal empty_input_array
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.name == \"player\" :
+		empty_input_array.emit()
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bhunq"]
@@ -27,4 +30,7 @@ script = SubResource("GDScript_bhunq")
 texture = ExtResource("1_ofdmh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1980233814]
+visible = false
 shape = SubResource("CircleShape2D_bhunq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -68,6 +68,11 @@ up_left={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="mushroom"
+2d_physics/layer_2="item "
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
