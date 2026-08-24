@@ -1,5 +1,4 @@
 extends CharacterBody2D
-
 signal input_array_update(inputs)
 # These are the variable for the player to move in 
 @export var SPEED = 160.0
@@ -48,67 +47,56 @@ func delete_element():
 func start_movement():
 			input_valid = false
 			for i in range(input_loop):
-				await movement()
+				for j in range(input_array.size()):
+					await movement(j)
 			input_array.clear()
 			input_array_update.emit(input_array)
 			input_valid = true
 
 func input_mapping():
-	#if the enter is down no other input i want 
-	# Handle jump.
 	if (input_valid == true):
 		if Input.is_action_just_pressed("jm") and is_on_floor():
 			append_array("jm")
-			
 		elif Input.is_action_just_pressed("left"):
 			append_array("left")
-			
 		elif Input.is_action_just_pressed("right"):
 			append_array("right")
-				
 		elif Input.is_action_just_pressed("up_left"):
 			append_array("up_left")
-				
 		elif Input.is_action_just_pressed("up_right"):
 			append_array("up_right")
-			
-# Function to remove the latest inputed value in the array 
 	if Input.is_action_just_pressed("back"):
 		delete_element()
-			
 	elif Input.is_action_just_pressed("enter") and (input_valid == true):
 		start_movement()
-
-		
 	elif Input.is_action_just_pressed("print_array"):
 		print_array()
 
-func movement():
-	for i in range(input_array.size()):
-		match input_array[i]:
-			"jm":
-				velocity.y = JUMP_VELOCITY
-				await get_tree().create_timer(1.0).timeout
-			"left":
-				velocity.x = -SPEED
-				await get_tree().create_timer(complete_run_time).timeout
-				velocity.x = 0
-			"right":
-				velocity.x = +SPEED
-				await get_tree().create_timer(complete_run_time).timeout
-				velocity.x = 0
-			"up_right":
-				velocity.y = JUMP_VELOCITY
-				velocity.x = +SPEED
-				await get_tree().create_timer(up_and_dir_time).timeout
-				velocity.x = 0
-			"up_left":
-				velocity.y = JUMP_VELOCITY
-				velocity.x = -SPEED
-				await get_tree().create_timer(up_and_dir_time).timeout
-				velocity.x = 0
-			_:
-				velocity.x = move_toward(velocity.x, 0, SPEED)
+func movement(j: int):
+	match input_array[j]:
+		"jm":
+			velocity.y = JUMP_VELOCITY
+			await get_tree().create_timer(1.0).timeout
+		"left":
+			velocity.x = -SPEED
+			await get_tree().create_timer(complete_run_time).timeout
+			velocity.x = 0
+		"right":
+			velocity.x = +SPEED
+			await get_tree().create_timer(complete_run_time).timeout
+			velocity.x = 0
+		"up_right":
+			velocity.y = JUMP_VELOCITY
+			velocity.x = +SPEED
+			await get_tree().create_timer(up_and_dir_time).timeout
+			velocity.x = 0
+		"up_left":
+			velocity.y = JUMP_VELOCITY
+			velocity.x = -SPEED
+			await get_tree().create_timer(up_and_dir_time).timeout
+			velocity.x = 0
+		_:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

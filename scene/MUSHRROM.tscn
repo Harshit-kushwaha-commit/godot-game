@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://wnot4ta53iq8"]
+
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_ofdmh"]
+
+[sub_resource type="GDScript" id="GDScript_bhunq"]
+resource_name = "MUSHRROM_SCRIPT"
+script/source = "extends Area2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bhunq"]
+radius = 82.1523
+
+[node name="Area2Da" type="Area2D" unique_id=204026515]
+script = SubResource("GDScript_bhunq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1781797690]
+texture = ExtResource("1_ofdmh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1980233814]
+shape = SubResource("CircleShape2D_bhunq")
